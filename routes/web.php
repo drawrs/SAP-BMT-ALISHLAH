@@ -22,3 +22,9 @@ Route::get('/lihat-aplikasi/{no_ap}', [
     'uses' => 'MainController@getLihatAplikasi',
     'as' => 'lihat_ap'
     ]);
+Route::post('/update-pendapatan', [
+    'uses' => 'NapOneController@updatePendapatan',
+    ]);
+Route::any('/hapus-pendapatan', [
+    'uses' => 'NapOneController@hapusPendapatan',
+    ]);

@@ -8,7 +8,7 @@
         </td>
         <td>
         <div class="form-group">
-            <font size="4.2em" style="font-weight: bolder;"><?php echo e($app->no_aplikasi); ?></font>
+            <font size="4.2em" style="font-weight: bolder;"><span id="no_applikasi"><?php echo e($app->no_aplikasi); ?></span></font>
             </div>
         </td>
     </tr>

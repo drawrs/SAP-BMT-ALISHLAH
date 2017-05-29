@@ -233,31 +233,41 @@
   <div class="row">
   <hr>
     <div class="col-md-6 bordered">
-    <table class="table table-responsive table-bordered">
+    <table class="table table-responsive table-bordered clonedInput">
+    <form method="post" action="{{ url('update-pendapatan') }}" id="pu_form">
+    {!! csrf_field() !!}
     <thead>
         <tr>
             <td colspan="2"><b>Pendapatan Usaha</b></td>
         </tr>
     </thead>
-    @php $t_pdptn = 0; @endphp
+    <tbody class="clone-area-pu">
+      @php $t_pdptn = 0; @endphp
       @foreach($pendapatan->where('tipe', 'pu')->get() as $pdptn)
      <!-- Total pendapatan -->
       @php $t_pdptn += $pdptn->isi; @endphp
       <tr>
-        <td width="150px"><b>{{$pdptn->judul}}</b></td>
+        <td width="150px">
+        <b>{{$pdptn->judul}}</b>
+        <button type="button" onClick="hapusPdp('{{$pdptn->id}}')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
+        </td>
         <td><input type="text" class="form-control" value="{{$pdptn->isi}}"></td>
       </tr>
       @endforeach
-      <tr>
+     
+    </tbody>
+    </form>
+      <tr id="jml_row">
           <td>Jumlah</td>
           <td>{{$t_pdptn}}</td>
       </tr>
       <tr>
           <td colspan="2">
-              <button class="btn btn-primary btn-sm">Tambah baris</button>
-              <button class="btn btn-success btn-sm">Simpan</button>
+              <button class="btn btn-primary btn-sm" onClick="addPdpRow('pu')" type="button">Tambah baris</button>
+              <button class="btn btn-success btn-sm" onClick="submitPdp('pu')" type="button">Simpan</button>
           </td>
       </tr>
+     
     </table>
   </div>
   <div class="col-md-6 bordered">
@@ -282,33 +292,41 @@
   </div>
   <div class="row">
     <div class="col-md-6 bordered">
-    <table class="table table-responsive table-bordered">
+    <table class="table table-responsive table-bordered clonedInput">
+    <form method="post" action="{{ url('update-pendapatan') }}" id="">
+    {!! csrf_field() !!}
     <thead>
         <tr>
             <td colspan="2"><b>Pendapatan Lain</b></td>
         </tr>
     </thead>
-
-    @php $t_pdptn = 0; @endphp
-
-    @foreach($pendapatan->where('tipe', 'pl')->get() as $pdptn)
+    <tbody class="clone-area-pl">
+      @php $t_pdptn = 0; @endphp
+      @foreach($pendapatan->where('tipe', 'pl')->get() as $pdptn)
      <!-- Total pendapatan -->
       @php $t_pdptn += $pdptn->isi; @endphp
       <tr>
-        <td width="150px"><b>{{$pdptn->judul}}</b></td>
+        <td width="150px">
+        <b>{{$pdptn->judul}}</b>
+        <button type="button" onClick="hapusPdp('{{$pdptn->id}}')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
+        </td>
         <td><input type="text" class="form-control" value="{{$pdptn->isi}}"></td>
       </tr>
       @endforeach
-      <tr>
+     
+    </tbody>
+    </form>
+      <tr id="jml_row">
           <td>Jumlah</td>
           <td>{{$t_pdptn}}</td>
       </tr>
       <tr>
           <td colspan="2">
-              <button class="btn btn-primary btn-sm">Tambah baris</button>
-              <button class="btn btn-success btn-sm">Simpan</button>
+              <button class="btn btn-primary btn-sm" onClick="addPdpRow('pl')" type="button">Tambah baris</button>
+              <button class="btn btn-success btn-sm" onClick="submitPdp('pl')" type="button">Simpan</button>
           </td>
       </tr>
+     
     </table>
   </div>
   <div class="col-md-6 bordered">
