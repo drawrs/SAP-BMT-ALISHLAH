@@ -57,7 +57,7 @@
 
         </div>
         <div class="panel-footer">
-            <a class="btn btn-success btn-sm" href="todo_list.html#">Perbaharui</a>
+            <button class="btn btn-success btn-sm" onclick="updateAplikasi()">Perbaharui</button>
             <a class="btn btn-default btn-sm" href="todo_list.html#">Batalkan</a>
         </div>
       </div>
@@ -81,52 +81,52 @@
 <script src="{{ url('plugins/input-mask/jquery.inputmask.js') }}"></script>
 <script src="{{ url('plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ url('plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
-<script src="https://unpkg.com/vue"></script>
+
 <script>
   $(function() {
     //Datemask dd/mm/yyyy
     $("[data-mask]").inputmask();
   });
 </script>
-<script>
-Vue.component('my-form', {
-  template: '#my-form'
-});
 
-new Vue({
-  el: '#app',
-  data: {
-    range:0
-  },
-  
-  methods: {
-    addForm: function() {
-      this.range += 1;
-    }
-  }
-})
-</script>
 <script>
-  function addPdpRow(jenisPdp){
+  function addPdpRow(jenisRow, table){
     var dom = '<tr>';
-    dom += '<td><input type="text" name="judul-'+ jenisPdp +'[]" class="form-control judul-'+ jenisPdp +'" placeholder="nama pendapatan"/></td>';
-    dom += '<td><input type="number" name="isi-'+ jenisPdp +'[]" class="form-control isi-'+ jenisPdp +'" placeholder="nilai pendapatan"/></td>';
+    dom += '<td><input type="text" class="form-control judul-'+ jenisRow +'-' + table + '" placeholder="nama pendapatan"/></td>';
+    dom += '<td><input type="number" class="form-control isi-'+ jenisRow +'-' + table + '" placeholder="nilai pendapatan"/></td>';
     dom += '</tr>';
-    $(dom).appendTo('.clone-area-' + jenisPdp);
+    //console.log(dom);
+    $(dom).appendTo('.clone-area-' + jenisRow);
     //$('#pu_form').preventDefault
   }
-  function submitPdp(jenisPdp){
+  function submitPdp(jenisRow, table){
       var no_app = $('#no_applikasi').text();
       var judul = [];
       var isi = [];
-      var tipe = jenisPdp;
-      $.each($('.judul-' + jenisPdp), function() {
+      var tipe = jenisRow;
+      $.each($('.judul-' + jenisRow + '-' + table), function() {
           judul.push($(this).val()); 
       });
-      $.each($('.isi-' + jenisPdp), function() {
+      $.each($('.isi-' + jenisRow + '-' + table), function() {
           isi.push($(this).val()); 
       });
-      $.post('{{url('update-pendapatan')}}', {
+      
+      console.log('.judul-' + jenisRow + '-' + table);
+      console.log('.isi-' + jenisRow + '-' + table);      
+      console.log(judul);
+      console.log(isi);
+
+       if(table == 'pdp'){
+        var url = '{{url('update-pendapatan')}}';
+      } else if(table == 'pngl') {
+        var url = '{{url('update-pengeluaran')}}';
+      } else if(table == 'neraca'){
+        var url = '{{url('update-neraca')}}';
+      } else {
+        alert("Url tujuan tidak valid!");
+        return;
+      }
+      $.post(""+ url, {
           _token: '{{csrf_token()}}',
           judul : judul,
           isi : isi,
@@ -134,19 +134,49 @@ new Vue({
           tipe : tipe
         }, function(data, textStatus, xhr) {
           /*optional stuff to do after success */
-         // console.log(data);
-          //return;
+         //console.log(data);
+        //return;
           alert(data);
           location.reload();
       });
       
   }
-  function hapusPdp(pdpId){
-    $.post('{{url('hapus-pendapatan')}}', {_token: '{{csrf_token()}}', id : pdpId}, function(data, textStatus, xhr) {
+  function hapusPdp(id, table){
+    var confirm = window.confirm("Anda yakin ?");
+    if(confirm == false){
+      return;
+    }
+     if(table == 'pdp'){
+        var url = '{{url('hapus-pendapatan')}}';
+      } else if(table == 'pngl') {
+        var url = '{{url('hapus-pengeluaran')}}';
+      } else if(table == 'neraca') {
+        var url = '{{url('hapus-neraca')}}';
+      } else {
+        alert("Url tujuan tidak valid!");
+        return;
+      }
+    $.post(""+ url, {_token: '{{csrf_token()}}', id : id}, function(data, textStatus, xhr) {
         /*optional stuff to do after success */
         //console.log(data);
         alert(data);
           location.reload();
+    });
+  }
+
+  function updateAplikasi(){
+    console.log("submited");
+    var form = $("#tab1_form");
+    var data = form.serialize();
+    var url = '/update-aplikasi';
+    var map = {};
+    $('.inputable').each(function(index, el) {
+      map[$(this).attr('name')] = $(this).val();
+    });
+    console.log(map);
+    $.post(""+ url, {_token: '{{csrf_token()}}', isi: map }, function(data, textStatus, xhr) {
+    
+      console.log(data);
     });
   }
 </script>

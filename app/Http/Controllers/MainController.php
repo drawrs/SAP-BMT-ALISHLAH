@@ -9,6 +9,7 @@ use App\Keuangan;
 use App\Mitra;
 use App\Cabang;
 use App\KonPK;
+use App\Neraca;
 use DB;
 class MainController extends Controller
 {
@@ -51,7 +52,29 @@ class MainController extends Controller
         $nap_satu = $app->nap_satu;
         $pendapatan = $app->pendapatan;
         $pengeluaran = $app->pengeluaran;
-        return view('lihat-aplikasi', compact('app', 'produks', 'mitraModel', 'cabangs', 'lbu', 'kusi', 'ps','ru', 'uumru', 'lkm_pc', 'konfirmasi_pk', 'nap_satu', 'pendapatan', 'pengeluaran'));
-    }
 
+        // Neraca
+        $neraca_harta = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'harta']);
+        $neraca_hutang = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'hutang']);
+        $neraca_modal = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'modal']);
+        //return  $neraca->where('tipe', 'hutang')->get();
+        return view('lihat-aplikasi', compact('app', 
+                                            'produks', 
+                                            'mitraModel', 
+                                            'cabangs', 
+                                            'lbu', 
+                                            'kusi', 
+                                            'ps',
+                                            'ru', 
+                                            'uumru', 
+                                            'lkm_pc', 
+                                            'konfirmasi_pk', 
+                                            'nap_satu', 
+                                            'pendapatan', 
+                                            'pengeluaran',
+                                            'neraca_hutang',
+                                            'neraca_modal',
+                                            'neraca_harta'));
+    }
+    
 }

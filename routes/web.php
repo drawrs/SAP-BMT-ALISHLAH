@@ -28,3 +28,18 @@ Route::post('/update-pendapatan', [
 Route::any('/hapus-pendapatan', [
     'uses' => 'NapOneController@hapusPendapatan',
     ]);
+Route::post('/update-pengeluaran', [
+    'uses' => 'NapOneController@updatePengeluaran',
+    ]);
+Route::any('/hapus-pengeluaran', [
+    'uses' => 'NapOneController@hapusPengeluaran',
+    ]);
+Route::post('/update-neraca', [
+    'uses' => 'NapOneController@updateNeraca',
+    ]);
+Route::any('/hapus-neraca', [
+    'uses' => 'NapOneController@hapusNeraca',
+    ]);
+Route::any('/update-aplikasi', [
+    'uses' => 'InfoTabController@updateAplikasi',
+    ]);

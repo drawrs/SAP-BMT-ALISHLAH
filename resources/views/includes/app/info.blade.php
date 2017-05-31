@@ -1,14 +1,17 @@
 <br>
 <div class="col-md-8">
     <table width="600px">
+    <form action="{{url('update-aplikasi')}}" method="POST" id="tab1_form">
     <caption class="title">Diisi Oleh UJKS</caption>
+    {!! csrf_field() !!}
     <tr>
         <td>
             NO.Aplikasi
         </td>
         <td>
         <div class="form-group">
-            <font size="4.2em" style="font-weight: bolder;"><span id="no_applikasi">{{$app->no_aplikasi}}</span></font>
+            <input type="hidden" class="inputable" name="tab1_no_app" value="{{$app->no_aplikasi}}">
+            <font size="4.2em" style="font-weight: bolder;" name=""><span id="no_applikasi"></span></font>
             </div>
         </td>
     </tr>
@@ -18,7 +21,7 @@
         </td>
         <td>
         <div class="form-group">
-            <input type="text" class="form-control" value="{{readDate($app->tanggal)}}" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+            <input type="text" class="form-control inputable" value="{{readDate($app->tanggal)}}"  name="tab1_tanggal" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
             </div>
         </td>
     </tr>
@@ -29,7 +32,7 @@
         </td>
         <td>
         <div class="form-group">
-            <select name="" id="" class="form-control">
+            <select name="tab1_cabang_id" id="" class="form-control inputable">
                 @forelse($cabangs->all() as $cabang)
                     <option value="{{$cabang->id}}" {{autoSelect($app->cabang_id, $cabang->id)}}>{{$cabang->nama}}</option>
                 @empty
@@ -44,7 +47,7 @@
         </td>
         <td>
          <div class="form-group">
-            <input type="text" class="form-control" value="{{$app->kode_sro}}">
+            <input type="text"  name="tab1_kode_sro" class="form-control inputable" value="{{$app->kode_sro}}">
             </div>
         </td>
     </tr>
@@ -54,7 +57,7 @@
         </td>
         <td>
          <div class="form-group">
-           <select name="" id="" class="form-control">
+           <select name="tab1_perkenalan" id="" class="form-control inputable">
                @foreach(getEnum(new App\Aplikasi, 'perkenalan') as $m_key => $m_val)
                     <option value="{{$m_key}}" {{autoSelect($app->perkenalan, $m_val)}}>{{$m_val}}</option>
                @endforeach
@@ -68,19 +71,20 @@
         </td>
         <td>
          <div class="form-group">
-            <input type="text" class="form-control" value="{{$app->nama_sro}}">
+            <input type="text"  name="tab1_nama_sro" class="form-control inputable" value="{{$app->nama_sro}}">
             </div>
         </td>
     </tr>
     <tr>
         <td colspan="2">
             Saya merekomendasikan agar aplikasi ini &nbsp;&nbsp;
-            <select name="" id="" class="clean">
+            <select name="tab1_saran" id="" class="clean inputable">
                @foreach(getEnum(new App\Aplikasi, 'saran') as $m_key => $m_val)
                     <option value="{{$m_key}}" {{autoSelect($app->saran, $m_val)}}>{{$m_val}}</option>
                @endforeach
             </select>
         </td>
     </tr>
+    </form>
 </table>
 </div>
