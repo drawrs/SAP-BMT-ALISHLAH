@@ -16,7 +16,7 @@
       <table class="table table-responsive table-borderless">
         <tr>
           <td width="150px">Nama</td>
-          <td><input type="text" class="form-control" value="{{$app->mitra->nama_lengkap}}" disabled></td>
+          <td><input type="text" class="form-control inputable" value="{{$app->mitra->nama_lengkap}}" disabled></td>
         </tr>
         <tr>
           <td>Jenis Kelamin</td>
@@ -27,18 +27,18 @@
         </tr>
         <tr>
           <td>Alamat Rumah</td>
-          <td><textarea name="" class="form-control" id="" cols="" rows="2" disabled>{{getAlamat('blk', $app->mitra->alamat->alamat_sekarang) . " " . getAlamat('jl', $app->mitra->alamat->alamat_sekarang)}}</textarea></td>
+          <td><textarea name="" class="form-control inputable" id="" cols="" rows="2" disabled>{{getAlamat('blk', $app->mitra->alamat->alamat_sekarang) . " " . getAlamat('jl', $app->mitra->alamat->alamat_sekarang)}}</textarea></td>
         </tr>
         <tr>
           <td>No. Telp. / HP</td>
-          <td><input type="text" class="form-control" value="{{$app->mitra->no_telp}}" disabled></td>
+          <td><input type="text" class="form-control inputable" value="{{$app->mitra->no_telp}}" disabled></td>
         </tr>
         <tr>
           <td>Riwayat hub.dgn Lembaga Keuangan</td>
           <td>
-            <select name="" id="" class="form-control">
+            <select name="tab5_rwyt_hbng_lbg" id="" class="form-control inputable">
              @foreach(getEnum(new App\NapSatu, 'rwyt_hbng_lbg') as $m_key => $m_val)
-             <option value="{{$m_key}}" {{autoSelect($nap_satu->rwyt_hbng_lbg, $m_val)}}>{{$m_val}}</option>
+             <option value="{{$m_val}}" {{autoSelect($nap_satu->rwyt_hbng_lbg, $m_val)}}>{{$m_val}}</option>
              @endforeach
            </select>
          </td>
@@ -46,9 +46,9 @@
        <tr>
         <td>Prospek Usaha</td>
         <td>
-          <select name="" id="" class="form-control">
+          <select name="tab5_ps_usaha" id="" class="form-control inputable">
            @foreach(getEnum(new App\NapSatu, 'ps_usaha') as $m_key => $m_val)
-           <option value="{{$m_key}}" {{autoSelect($nap_satu->ps_usaha, $m_val)}}>{{$m_val}}</option>
+           <option value="{{$m_val}}" {{autoSelect($nap_satu->ps_usaha, $m_val)}}>{{$m_val}}</option>
            @endforeach
          </select>
        </td>
@@ -56,9 +56,9 @@
      <tr>
       <td>Ketergantungan thd Supplyer</td>
       <td>
-        <select name="" id="" class="form-control">
+        <select name="tab5_ktg_thd_sp" id="" class="form-control inputable">
          @foreach(getEnum(new App\NapSatu, 'ktg_thd_sp') as $m_key => $m_val)
-         <option value="{{$m_key}}" {{autoSelect($nap_satu->ktg_thd_sp, $m_val)}}>{{$m_val}}</option>
+         <option value="{{$m_val}}" {{autoSelect($nap_satu->ktg_thd_sp, $m_val)}}>{{$m_val}}</option>
          @endforeach
        </select>
      </td>
@@ -66,9 +66,9 @@
    <tr>
     <td>Ketergantungan thd Pelanggan</td>
     <td>
-      <select name="" id="" class="form-control">
+      <select name="tab5_ktg_thd_pl" id="" class="form-control inputable">
        @foreach(getEnum(new App\NapSatu, 'ktg_thd_pl') as $m_key => $m_val)
-       <option value="{{$m_key}}" {{autoSelect($nap_satu->ktg_thd_pl, $m_val)}}>{{$m_val}}</option>
+       <option value="{{$m_val}}" {{autoSelect($nap_satu->ktg_thd_pl, $m_val)}}>{{$m_val}}</option>
        @endforeach
      </select>
    </td>
@@ -76,9 +76,9 @@
  <tr>
   <td>Wilayah Pemasaran</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_wly_pmsrn" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'wly_pmsrn') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->wly_pmsrn, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->wly_pmsrn, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -86,9 +86,9 @@
 <tr>
   <td>Jenis Produk</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_jns_prdk" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'jns_prdk') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->jns_prdk, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->jns_prdk, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -99,28 +99,28 @@
   <table class="table table-responsive table-borderless">
     <tr>
       <td width="150px">Jml. Permohonan Pembiayaan</td>
-      <td><input type="text" class="form-control" value="{{$app->nominal_pb}}" disabled=""></td>
+      <td><input type="text" class="form-control inputable" value="{{$app->nominal_pb}}" disabled=""></td>
     </tr>
     <tr>
       <td>Bidang Usaha</td>
       <td>
-        <select name="" id="" class="form-control" disabled>
+        <select name="" id="" class="form-control inputable" disabled>
          @foreach(getEnum(new App\Keuangan, 'bidang_usaha') as $m_key => $m_val)
-         <option value="{{$m_key}}" {{autoSelect($app->keuangan->bidang_usaha, $m_val)}}>{{$m_val}}</option>
+         <option value="{{$m_val}}" {{autoSelect($app->keuangan->bidang_usaha, $m_val)}}>{{$m_val}}</option>
          @endforeach
        </select>
      </td>
    </tr>
    <tr>
     <td>Alamat Usaha</td>
-    <td><input type="text" class="form-control" value="{{$app->keuangan->alamat}}" disabled=""></td>
+    <td><input type="text" class="form-control inputable" value="{{$app->keuangan->alamat}}" disabled=""></td>
   </tr>
   <tr>
     <td>Lama Usaha</td>
     <td>
-      <select name="" id="" class="form-control">
+      <select name="tab5_lm_ush" id="" class="form-control inputable">
        @foreach(getEnum(new App\NapSatu, 'lm_ush') as $m_key => $m_val)
-       <option value="{{$m_key}}" {{autoSelect($nap_satu->lm_ush, $m_val)}}>{{$m_val}}</option>
+       <option value="{{$m_val}}" {{autoSelect($nap_satu->lm_ush, $m_val)}}>{{$m_val}}</option>
        @endforeach
      </select>
    </td>
@@ -128,9 +128,9 @@
  <tr>
   <td>Reputasi Usaha</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_rpt_ush" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'rpt_ush') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->rpt_ush, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->rpt_ush, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -138,9 +138,9 @@
 <tr>
   <td>Usia</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_usia" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'usia') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->usia, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->usia, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -148,9 +148,9 @@
 <tr>
   <td>Administrasi Usaha</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_adm_ush" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'adm_ush') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->adm_ush, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->adm_ush, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -158,9 +158,9 @@
 <tr>
   <td>Tempat Tinggal</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_tmpt_tgl" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'tmpt_tgl') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->tmpt_tgl, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->tmpt_tgl, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -168,9 +168,9 @@
 <tr>
   <td>Tempat Usaha</td>
   <td>
-    <select name="" id="" class="form-control">
+    <select name="tab5_tmpt_ush" id="" class="form-control inputable">
      @foreach(getEnum(new App\NapSatu, 'tmpt_ush') as $m_key => $m_val)
-     <option value="{{$m_key}}" {{autoSelect($nap_satu->tmpt_ush, $m_val)}}>{{$m_val}}</option>
+     <option value="{{$m_val}}" {{autoSelect($nap_satu->tmpt_ush, $m_val)}}>{{$m_val}}</option>
      @endforeach
    </select>
  </td>
@@ -180,11 +180,11 @@
   <td>
     <div class="form-group">
       <label for=""><small><strong>Simpanan</strong></small></label>
-      <input type="text" class="form-control" value="{{$nap_satu->rkn_smpn}}">
+      <input type="text" name="tab5_rkn_smpn" class="form-control inputable" value="{{$nap_satu->rkn_smpn}}">
     </div>
     <div class="form-group">
       <label for=""><small><strong>Sijangka</strong></small></label>
-      <input type="text" class="form-control" value="{{$nap_satu->rkn_sjnk}}">
+      <input type="text" name="tab5_rkn_sjnk" class="form-control inputable" value="{{$nap_satu->rkn_sjnk}}">
     </div>
   </td>
 </tr>
@@ -198,25 +198,25 @@
     <table class="table table-borderless" width="" align="center">
       <tr>
         <td width="200px">Produk Jasa Yag Dihasilkan</td>
-        <td><input type="text" class="form-control" value="{{$app->keuangan->nama_usaha}}" disabled=""></td>
+        <td><input type="text" class="form-control inputable" value="{{$app->keuangan->nama_usaha}}" disabled=""></td>
       </tr>
       <tr>
         <td>Rencana Penggunakan</td>
-        <td><input type="text" class="form-control" value="{{$app->keuangan->tujuan_pb_detail}}" disabled=""></td>
+        <td><input type="text" class="form-control inputable" value="{{$app->keuangan->tujuan_pb_detail}}" disabled=""></td>
       </tr>
       <tr>
         <td>Jumlah Pembiayaan yang di Rekomendasikan</td>
         <td>
-          <input type="number" class="clean" value="{{$app->rekomen_pb}}">
+          <input type="number" class="clean inputable" name="tab5_rekomen_pb" value="{{$app->rekomen_pb}}">
           &nbsp;&nbsp;
           <strong>JK.Waktu</strong>
-          <input type="number" class="clean" value="{{$app->waktu_pb}}">
+          <input type="number" class="clean inputable" name="tab5_waktu_pb" value="{{$app->waktu_pb}}">
         </td>
       </tr>
       <tr>
         <td>Jumlah Margin / Bagi hasil</td>
         <td>
-          <input type="text" class="clean" value="{{$app->margin_pb}}">
+          <input type="text" class="clean inputable" name="tab5_margin_pb" value="{{$app->margin_pb}}">
           &nbsp;&nbsp;
           <strong>e. rate</strong> :
           <span>2 %</span>
@@ -224,7 +224,7 @@
       </tr>
       <tr>
         <td>Besar angsuran perbulan</td>
-        <td><input type="text" class="form-control"  value="{{$app->angs_pb}}"></td>
+        <td><input type="text" class="form-control inputable" name="tab5_angs_pb" value="{{$app->angs_pb}}"></td>
       </tr>
 
     </table>
@@ -251,7 +251,7 @@
               <b>{{$pdptn->judul}}</b>
               <button type="button" onClick="hapusPdp('{{$pdptn->id}}','pdp')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
             </td>
-            <td><input type="text" class="form-control" value="{{$pdptn->isi}}"></td>
+            <td><input type="text" class="form-control inputable" value="{{$pdptn->isi}}"></td>
           </tr>
           @endforeach
 
@@ -289,7 +289,7 @@
               <b>{{$pngl->judul}}</b>
               <button type="button" onClick="hapusPdp('{{$pngl->id}}', 'pngl')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
             </td>
-            <td><input type="text" class="form-control" value="{{$pngl->isi}}"></td>
+            <td><input type="text" class="form-control inputable" value="{{$pngl->isi}}"></td>
           </tr>
           @endforeach
 
@@ -329,7 +329,7 @@
               <b>{{$pdptn->judul}}</b>
               <button type="button" onClick="hapusPdp('{{$pdptn->id}}','pdp')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
             </td>
-            <td><input type="text" class="form-control" value="{{$pdptn->isi}}"></td>
+            <td><input type="text" class="form-control inputable" value="{{$pdptn->isi}}"></td>
           </tr>
           @endforeach
 
@@ -367,7 +367,7 @@
               <b>{{$pngl->judul}}</b>
               <button type="button" onClick="hapusPdp('{{$pngl->id}}', 'pngl')" class="btn btn-danger btn-xs pull-right"><i class="fa fa-minus"></i></button>
             </td>
-            <td><input type="text" class="form-control" value="{{$pngl->isi}}"></td>
+            <td><input type="text" class="form-control inputable" value="{{$pngl->isi}}"></td>
           </tr>
           @endforeach
 
@@ -398,7 +398,7 @@
             <td colspan="2">
               <div class="form-group">
                 <label for="">Catatan</label>
-                <textarea name="" id="" rows="3" class="form-control"></textarea>
+                <textarea name="tab5_catatan" id="" rows="3" class="form-control inputable">{{$labaRugi->catatan}}</textarea>
               </div>
             </td>
           </tr>
@@ -420,15 +420,21 @@
       <table class="table table-bordered table-responsive">
         <tr>
           <td>Jumlah Angsuran</td>
-          <td>Rp. 200202</td>
+          <td>
+            <input type="text" class="form-control inputable" value="{{$labaRugi->jml_angs}}" name="tab5_jml_angs">
+          </td>
         </tr>
         <tr>
           <td>Laba / Rugi Bersih setelah angsuran</td>
-          <td>Rp. 200202</td>
+          <td>
+            <input type="text" class="form-control inputable"  value="{{$labaRugi->lb_rg}}" name="tab5_lb_rg">
+          </td>
         </tr>
         <tr>
           <td>Income Coverage</td>
-          <td>29%</td>
+          <td>
+            <input type="text" class="form-control inputable" value="{{$labaRugi->income}}"  name="tab5_income">
+          </td>
         </tr>
       </table>
     </div>

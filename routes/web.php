@@ -43,3 +43,12 @@ Route::any('/hapus-neraca', [
 Route::any('/update-aplikasi', [
     'uses' => 'InfoTabController@updateAplikasi',
     ]);
+Route::any('/tes',function(){
+    $arr = array(['nama' => "rizal", 'kelas' => "12"]);
+    $data = json_encode($arr);
+    echo $data;
+});
+
+Route::post('/update-lkm-one', [
+    'uses' => 'LkmOneController@updateLkm',
+    ]);

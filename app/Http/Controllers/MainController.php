@@ -10,6 +10,7 @@ use App\Mitra;
 use App\Cabang;
 use App\KonPK;
 use App\Neraca;
+use App\LabaRugi;
 use DB;
 class MainController extends Controller
 {
@@ -37,7 +38,7 @@ class MainController extends Controller
         $mitraModel = new Mitra;
         $produks = new Produk;
         $cabangs = new Cabang;
-
+        
         $lbu = $app->lkm->where('tipe', 'LBU')->first();
         $kusi = $app->lkm->where('tipe', 'KUSI')->first();
         $ps = $app->lkm->where('tipe', 'PS')->first();
@@ -57,6 +58,7 @@ class MainController extends Controller
         $neraca_harta = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'harta']);
         $neraca_hutang = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'hutang']);
         $neraca_modal = Neraca::where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'modal']);
+        $labaRugi = LabaRugi::where(['no_aplikasi' => $app->no_aplikasi])->first();
         //return  $neraca->where('tipe', 'hutang')->get();
         return view('lihat-aplikasi', compact('app', 
                                             'produks', 
@@ -74,7 +76,8 @@ class MainController extends Controller
                                             'pengeluaran',
                                             'neraca_hutang',
                                             'neraca_modal',
-                                            'neraca_harta'));
+                                            'neraca_harta',
+                                            'labaRugi'));
     }
     
 }

@@ -22,9 +22,14 @@
               <span class="task-title-sp"><h3>Latar Belakang Usaha</h3></span>
           </div>
           <div class="task-content">
-            <textarea name="" id="" cols="30" rows="5" class="form-control"><?php echo e($lbu->pesan); ?></textarea>
+            <form action="<?php echo e(url('update-lkm-one')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input type="hidden" name="id" value="<?php echo e($lbu->id); ?>">
+            <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($lbu->pesan); ?></textarea>
             <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
         </div>
     </li>
     <li>
@@ -33,9 +38,15 @@
           <span class="task-title-sp"><h3>Kondisi Usaha Saat Ini</h3></span>
       </div>
       <div class="task-content">
-        <textarea name="" id="" cols="30" rows="5" class="form-control"><?php echo e($kusi->pesan); ?></textarea>
+      <div class="task-content">
+            <form action="<?php echo e(url('update-lkm-one')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input type="hidden" name="id" value="<?php echo e($kusi->id); ?>">
+        <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($kusi->pesan); ?></textarea>
         <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
     </div>
 </li>
 </ol>
@@ -51,9 +62,15 @@
       <span class="task-title-sp"><h3>Pesaing</h3></span>
   </div>
   <div class="task-content">
-    <textarea name="" id="" cols="30" rows="5" class="form-control"><?php echo e($ps->pesan); ?></textarea>
+  <div class="task-content">
+            <form action="<?php echo e(url('update-lkm-one')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input type="hidden" name="id" value="<?php echo e($ps->id); ?>">
+    <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($ps->pesan); ?></textarea>
     <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
 </div>
 </li>
 <li>
@@ -61,9 +78,15 @@
   <div class="task-title">
     <span class="task-title-sp"><h3>Resiko Usaha</h3></span>
     <div class="task-content">
-        <textarea name="" id="" cols="30" rows="5" class="form-control"><?php echo e($ru->pesan); ?></textarea>
+    <div class="task-content">
+            <form action="<?php echo e(url('update-lkm-one')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input type="hidden" name="id" value="<?php echo e($ru->id); ?>">
+        <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($ru->pesan); ?></textarea>
         <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
     </div>
 </div>
 </li>
@@ -73,9 +96,15 @@
       <span class="task-title-sp"><h3>Upaya Untuk Mengatasi Resiko Usaha</h3></span>
   </div>
   <div class="task-content">
-    <textarea name="" id="" cols="30" rows="5" class="form-control"><?php echo e($uumru->pesan); ?></textarea>
+  <div class="task-content">
+            <form action="<?php echo e(url('update-lkm-one')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input type="hidden" name="id" value="<?php echo e($uumru->id); ?>">
+    <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($uumru->pesan); ?></textarea>
     <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
 </div>
 </li>                                      
 </ol>

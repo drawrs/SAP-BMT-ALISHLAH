@@ -7,6 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Aplikasi extends Model
 {
     protected $table = "data_aplikasi";
+    protected $fillable = ['no_aplikasi',
+                            'tanggal',
+                            'cabang_id',
+                            'mitra_id',
+                            'keuangan_id',
+                            'produk_id',
+                            'rekomen_pb',
+                            'nominal_pb',
+                            'waktu_pb',
+                            'angs_pb',
+                            'margin_pb',
+                            'kode_sro',
+                            'nama_sro',
+                            'perkenalan',
+                            'saran'];
     public function mitra ()
     {
         return $this->belongsTo('App\Mitra');

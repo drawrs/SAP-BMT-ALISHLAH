@@ -22,9 +22,13 @@
               <span class="task-title-sp"><h3>Latar Belakang Usaha</h3></span>
           </div>
           <div class="task-content">
-            <textarea name="" id="" cols="30" rows="5" class="form-control">{{$lbu->pesan}}</textarea>
+            <form action="{{url('update-lkm-one')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="id" value="{{$lbu->id}}">
+            <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$lbu->pesan}}</textarea>
             <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
         </div>
     </li>
     <li>
@@ -33,9 +37,14 @@
           <span class="task-title-sp"><h3>Kondisi Usaha Saat Ini</h3></span>
       </div>
       <div class="task-content">
-        <textarea name="" id="" cols="30" rows="5" class="form-control">{{$kusi->pesan}}</textarea>
+      <div class="task-content">
+            <form action="{{url('update-lkm-one')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="id" value="{{$kusi->id}}">
+        <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$kusi->pesan}}</textarea>
         <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
     </div>
 </li>
 </ol>
@@ -51,9 +60,14 @@
       <span class="task-title-sp"><h3>Pesaing</h3></span>
   </div>
   <div class="task-content">
-    <textarea name="" id="" cols="30" rows="5" class="form-control">{{$ps->pesan}}</textarea>
+  <div class="task-content">
+            <form action="{{url('update-lkm-one')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="id" value="{{$ps->id}}">
+    <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$ps->pesan}}</textarea>
     <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
 </div>
 </li>
 <li>
@@ -61,9 +75,14 @@
   <div class="task-title">
     <span class="task-title-sp"><h3>Resiko Usaha</h3></span>
     <div class="task-content">
-        <textarea name="" id="" cols="30" rows="5" class="form-control">{{$ru->pesan}}</textarea>
+    <div class="task-content">
+            <form action="{{url('update-lkm-one')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="id" value="{{$ru->id}}">
+        <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$ru->pesan}}</textarea>
         <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
     </div>
 </div>
 </li>
@@ -73,9 +92,14 @@
       <span class="task-title-sp"><h3>Upaya Untuk Mengatasi Resiko Usaha</h3></span>
   </div>
   <div class="task-content">
-    <textarea name="" id="" cols="30" rows="5" class="form-control">{{$uumru->pesan}}</textarea>
+  <div class="task-content">
+            <form action="{{url('update-lkm-one')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="id" value="{{$uumru->id}}">
+    <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$uumru->pesan}}</textarea>
     <br>
             <button class="btn btn-success">Terbitkan</button>
+            </form>
 </div>
 </li>                                      
 </ol>

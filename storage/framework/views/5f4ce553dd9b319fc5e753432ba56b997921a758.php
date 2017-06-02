@@ -21,13 +21,13 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation"  class="<?php echo e(autoTab('tabInfo')); ?>"><a href="#tabInfo" aria-controls="profile" role="tab" data-toggle="tab">Info</a></li>
-          <li role="presentation" class="<?php echo e(autoTab('tab1_1')); ?>"><a href="#tab1_1" aria-controls="home" role="tab" data-toggle="tab">Aplikasi (data mitra)</a></li>
-          <li role="presentation" class="<?php echo e(autoTab('tab1_2')); ?>"><a href="#tab1_2" aria-controls="home" role="tab" data-toggle="tab">Aplikasi (data keuangan)</a></li>
-          <li role="presentation" class="<?php echo e(autoTab('tab2')); ?>"><a href="#tab2" aria-controls="profile" role="tab" data-toggle="tab">LKM.1</a></li>
+          <li role="presentation"  class="normal-tabs <?php echo e(autoTab('tabInfo')); ?>"><a href="#tabInfo" aria-controls="profile" role="tab" data-toggle="tab">Info</a></li>
+          <li role="presentation" class="normal-tabs <?php echo e(autoTab('tab1_1')); ?>"><a href="#tab1_1" aria-controls="home" role="tab" data-toggle="tab">Aplikasi (data mitra)</a></li>
+          <li role="presentation" class="normal-tabs <?php echo e(autoTab('tab1_2')); ?>"><a href="#tab1_2" aria-controls="home" role="tab" data-toggle="tab">Aplikasi (data keuangan)</a></li>
+          <li role="presentation" class="normal-tabs <?php echo e(autoTab('tab2')); ?>"><a href="#tab2" aria-controls="profile" role="tab" data-toggle="tab">LKM.1</a></li>
           <li role="presentation" class="<?php echo e(autoTab('tab3')); ?>"><a href="#tab3" aria-controls="profile" role="
-          tab" data-toggle="tab">LKM.2</a></li>
-          <li role="presentation" class="<?php echo e(autoTab('tab4')); ?>"><a href="#tab4" aria-controls="profile" role="tab" data-toggle="tab">NAP.1</a></li>
+          tab" data-toggle="tab" id="tab_lkm_pc">LKM.2</a></li>
+          <li role="presentation" class="normal-tabs <?php echo e(autoTab('tab4')); ?>"><a href="#tab4" aria-controls="profile" role="tab" data-toggle="tab" id="tab_nap_one">NAP.1</a></li>
             
           </ul>
 
@@ -56,8 +56,8 @@
 
         </div>
         <div class="panel-footer">
-            <button class="btn btn-success btn-sm" onclick="updateAplikasi()">Perbaharui</button>
-            <a class="btn btn-default btn-sm" href="todo_list.html#">Batalkan</a>
+            <button class="btn btn-success" id="mainSubmitBtn" onclick="updateAplikasi()">Perbaharui</button>
+            <a class="btn btn-default" href="todo_list.html#">Batalkan</a>
         </div>
       </div>
     </section>
@@ -82,9 +82,39 @@
 <script src="<?php echo e(url('plugins/input-mask/jquery.inputmask.extensions.js')); ?>"></script>
 
 <script>
+
   $(function() {
     //Datemask dd/mm/yyyy
     $("[data-mask]").inputmask();
+  
+    $('#submitLkmDua').click(function(event) {
+      /* Act on the event */
+      var lkm_pc_id = $('#tab4_lkm_pc_id').val();
+      var tujuan_pb = $('#tab4_tujuan_pb').val();
+      var penjelasan = $('#tab4_penjelasan').val(); 
+
+      $.post('/update-aplikasi?lkm_pc=true', {_token: '<?php echo e(csrf_token()); ?>', id: lkm_pc_id, tujuan_pb: tujuan_pb, penjelasan: penjelasan}, function(data, textStatus, xhr) {
+       
+        console.log(data);
+      });
+      $.each($('.lkmDua'), function(index, val) {
+         /* iterate through array or object */
+         var form = $(this).serializeArray();
+         var arr = {};
+         $.each(form, function(index, val) {
+            /* iterate through array or object */
+            //console.log(form[index].name + " " + val.value);
+           arr[form[index].name] = val.value;
+         });
+         $.post('/update-aplikasi?kon_kp=true', {_token: '<?php echo e(csrf_token()); ?>', data: arr } , function(data, textStatus, xhr) {
+           
+           console.log(data);
+         });
+         console.log(arr);
+      });
+      // notifikasi pemberitahuan
+      toastr.success('Berhasil !', 'Data telah disimpan ke database', {timeOut: 5000})
+    });
   });
 </script>
 
@@ -170,14 +200,40 @@
     var url = '/update-aplikasi';
     var map = {};
     $('.inputable').each(function(index, el) {
-      map[$(this).attr('name')] = $(this).val();
+      if($(this).attr('name') == 'tab2_jk'){
+        map[$(this).attr('name')] = $('input[type=radio]:checked').val();
+      } else {
+        map[$(this).attr('name')] = $(this).val();
+      }
+      
     });
     console.log(map);
-    $.post(""+ url, {_token: '<?php echo e(csrf_token()); ?>', isi: map }, function(data, textStatus, xhr) {
-    
-      console.log(data);
+    submitForm(map, function(){
+      submitTab2(map, function(){
+        console.log("kelar lagi");
+      });
     });
   }
+  function submitTab2(data, callback){
+    console.log("Udah dulu");
+    callback(data);
+  }
+  function submitForm(data, callback){
+    var url = '/update-aplikasi';
+    $.post(""+ url, {_token: '<?php echo e(csrf_token()); ?>', isi: data }, function(data, textStatus, xhr) {
+        console.log(data);
+       /* $.each(data, function(key, val){
+          var status = val.status;
+          callback(data);
+        });*/
+        alert(data);
+        // notifikasi pemberitahuan
+        /*toastr.success('Berhasil !', "Data telah di perbaharui", {
+          timeOut: 5000});*/
+        location.reload();
+      });
+  }
+  
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.main-layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

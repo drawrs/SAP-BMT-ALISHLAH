@@ -1038,3 +1038,28 @@ if (! function_exists('readDate')) {
         return $result;
     }
 }
+if (! function_exists('toDate')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function toDate($tgl = "00/00/0000") // defaultnya sngaja dibikin false
+    {
+        $x = explode("/", $tgl);
+        $result = $x[2] . "-" . $x[1] . "-" . $x[0];
+        return $result;
+    }
+}
+if (! function_exists('makeAlamat')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function makeAlamat($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $l) // defaultnya sngaja dibikin false
+    {
+        $alamat_asal = $a . '#' .  $b. '#' .  $c. '#' .  $d. '#' .  $e. '#' .  $f. '#' .  $g;
+        $alamat_ktp = $h . '#' .  $i. '#' .   $j. '#' .   $k. '#' .   $l. '#' .   $m. '#' .  $l;
+        $hasil  = array('asal' => $alamat_asal, 'ktp' => $alamat_ktp);
+        return $hasil;
+    }
+}

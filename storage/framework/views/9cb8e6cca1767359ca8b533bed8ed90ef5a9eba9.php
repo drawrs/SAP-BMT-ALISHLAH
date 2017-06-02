@@ -1,7 +1,7 @@
 <br>
 <div class="col-md-8">
     <table width="600px">
-    <form action="<?php echo e(url('update-aplikasi')); ?>" method="POST" id="tab1_form">
+    <form action="<?php echo e(url('update-aplikasi')); ?>" method="POST" id="tabl_form">
     <caption class="title">Diisi Oleh UJKS</caption>
     <?php echo csrf_field(); ?>
 

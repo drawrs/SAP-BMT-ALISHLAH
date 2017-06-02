@@ -8,4 +8,5 @@ class Lkm extends Model
 {
     //
     protected $table = 'lkm';
+    protected $fillable = ['tipe', 'no_aplikasi', 'pesan'];
 }
