@@ -210,7 +210,7 @@
           <input type="number" class="clean inputable" name="tab5_rekomen_pb" value="<?php echo e($app->rekomen_pb); ?>">
           &nbsp;&nbsp;
           <strong>JK.Waktu</strong>
-          <input type="number" class="clean inputable" name="tab5_waktu_pb" value="<?php echo e($app->waktu_pb); ?>">
+          <input type="number" class="clean inputable" name="tab5_waktu_pb" id="tab5_waktu_pb" value="<?php echo e($app->waktu_pb); ?>">
         </td>
       </tr>
       <tr>
@@ -244,7 +244,7 @@
         </thead>
         <tbody class="clone-area-pu">
           <?php  $t_pdptn = 0;  ?>
-          <?php $__currentLoopData = $pendapatan->where('tipe', 'pu')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pdptn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php $__currentLoopData = $pendapatan->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu'])->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pdptn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <!-- Total pendapatan -->
           <?php  $t_pdptn += $pdptn->isi;  ?>
           <tr>
@@ -283,7 +283,7 @@
         </thead>
         <tbody class="clone-area-pu_hhp">
           <?php  $t_pngl = 0;  ?>
-          <?php $__currentLoopData = $pengeluaran->where('tipe', 'pu_hhp')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pngl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php $__currentLoopData = $pengeluaran->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu_hhp'])->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pngl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <!-- Total pendapatan -->
           <?php  $t_pngl += $pngl->isi;  ?>
           <tr>
@@ -324,7 +324,7 @@
         </thead>
         <tbody class="clone-area-pl">
           <?php  $t_pdptn = 0;  ?>
-          <?php $__currentLoopData = $pendapatan->where('tipe', 'pl')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pdptn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php $__currentLoopData = $pendapatan->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pl'])->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pdptn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <!-- Total pendapatan -->
           <?php  $t_pdptn += $pdptn->isi;  ?>
           <tr>
@@ -363,7 +363,7 @@
         </thead>
         <tbody class="clone-area-pu_rt">
           <?php  $t_pngl = 0;  ?>
-          <?php $__currentLoopData = $pengeluaran->where('tipe', 'pu_rt')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pngl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php $__currentLoopData = $pengeluaran->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu_rt'])->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pngl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <!-- Total pendapatan -->
           <?php  $t_pngl += $pngl->isi;  ?>
           <tr>

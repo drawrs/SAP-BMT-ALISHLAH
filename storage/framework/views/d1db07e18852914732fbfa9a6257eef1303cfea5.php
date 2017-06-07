@@ -12,13 +12,14 @@
             <br>
         </div>
         <div class="panel-body">
+        <?php echo $__env->make('includes.panel-cari', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
           <div class="task-content">
 
               <ul class="task-list">
                   <li>
                       
                       <div class="task-title">
-                      <?php $__currentLoopData = $app; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $app): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <?php $__currentLoopData = $apps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $app): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       
                       <div class="col-sm-4 round-border">
                           <table class="table table-borderless">
@@ -26,13 +27,13 @@
                               <td width="100px">NO APLIKASI</td>
                               <td>:</td>
                               <td><strong><?php echo e($app->no_aplikasi); ?></strong></td>
-                              <td><button class="btn btn-success btn-block btn-xs"><i class="fa fa-pencil"></i> ubah</button></td>
+                              <!-- <td><button class="btn btn-success btn-block btn-xs"><i class="fa fa-pencil"></i> ubah</button></td> -->
                           </tr>
                           <tr>
                               <td>PRODUK</td>
                               <td>:</td>
                               <td><?php echo e($app->produk->nama); ?></td>
-                              <td><button class="btn btn-danger btn-block btn-xs"><i class="fa fa-trash-o"></i> hapus</button></td>
+                              <td><a href="<?php echo e(route('hapus_ap', ['id' => $app->id])); ?>" onclick="return confirm('Anda yakin ingin menghapus aplikasi ini?')" class="btn btn-danger btn-block btn-xs"><i class="fa fa-trash-o"></i> hapus</a></td>
                           </tr>
                           <tr>
                               <td>PEMOHON</td>
@@ -50,9 +51,14 @@
           </div>
 
           <div class=" add-task-row">
-              <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Tambah Aplikasi</a>
+              <a class="btn btn-success btn-sm pull-left" href="<?php echo e(url('tambah-aplikasi')); ?>">Tambah Aplikasi</a>
               <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
           </div>
+          
+      </div>
+      <div class="container">
+        <?php echo $apps->links(); ?>
+
       </div>
   </section>
 </div>

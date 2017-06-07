@@ -13,13 +13,14 @@
             <br>
         </div>
         <div class="panel-body">
+        @include('includes.panel-cari')
           <div class="task-content">
 
               <ul class="task-list">
                   <li>
                       
                       <div class="task-title">
-                      @foreach($app as $app)
+                      @foreach($apps as $app)
                       
                       <div class="col-sm-4 round-border">
                           <table class="table table-borderless">
@@ -27,13 +28,13 @@
                               <td width="100px">NO APLIKASI</td>
                               <td>:</td>
                               <td><strong>{{$app->no_aplikasi}}</strong></td>
-                              <td><button class="btn btn-success btn-block btn-xs"><i class="fa fa-pencil"></i> ubah</button></td>
+                              <!-- <td><button class="btn btn-success btn-block btn-xs"><i class="fa fa-pencil"></i> ubah</button></td> -->
                           </tr>
                           <tr>
                               <td>PRODUK</td>
                               <td>:</td>
                               <td>{{$app->produk->nama}}</td>
-                              <td><button class="btn btn-danger btn-block btn-xs"><i class="fa fa-trash-o"></i> hapus</button></td>
+                              <td><a href="{{ route('hapus_ap', ['id' => $app->id]) }}" onclick="return confirm('Anda yakin ingin menghapus aplikasi ini?')" class="btn btn-danger btn-block btn-xs"><i class="fa fa-trash-o"></i> hapus</a></td>
                           </tr>
                           <tr>
                               <td>PEMOHON</td>
@@ -51,9 +52,13 @@
           </div>
 
           <div class=" add-task-row">
-              <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Tambah Aplikasi</a>
+              <a class="btn btn-success btn-sm pull-left" href="{{url('tambah-aplikasi')}}">Tambah Aplikasi</a>
               <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
           </div>
+          
+      </div>
+      <div class="container">
+        {!! $apps->links() !!}
       </div>
   </section>
 </div>

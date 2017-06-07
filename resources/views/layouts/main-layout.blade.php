@@ -23,6 +23,8 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <link rel="stylesheet" href="{{url('assets/css/to-do.css')}}">
     <link href="{{ url('toastr/build/toastr.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url('select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ url('select2/css/select2-bootstrap.css')}}">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,6 +74,9 @@
     <!--common script for all pages-->
     <script src="{{url('assets/js/common-scripts.js')}}"></script>
     <script src="{{ url('toastr/build/toastr.min.js') }}"></script>
+
+    <!-- select2 -->
+    <script src="{{ url('select2/js/select2.full.js') }}"></script>
     <!--script for this page-->
 
   @yield('bottscript')

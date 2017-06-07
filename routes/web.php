@@ -52,3 +52,24 @@ Route::any('/tes',function(){
 Route::post('/update-lkm-one', [
     'uses' => 'LkmOneController@updateLkm',
     ]);
+
+
+Route::get('/tambah-aplikasi', [
+    'uses' => 'MainController@getTambahAplikasi',
+    'as' => 'tambah_ap'
+    ]);
+Route::post('/tambah-aplikasi', [
+    'uses' => 'MainController@postTambahAplikasi',
+    'as' => 'post.tambah_ap'
+    ]);
+Route::get('/get-data-ktp', [
+    'uses' => 'MainController@getDataKtp']);
+
+Route::get('/hapus-aplikasi/{id}', [
+    'uses' => 'MainController@getHapusApp',
+    'as' => 'hapus_ap']);
+
+Route::get('/mitra', [
+    'uses' => 'MainController@getDaftarMitra']);
+Route::get('/detail-mitra', [
+    'uses' => 'MainController@getDetailMitra']);

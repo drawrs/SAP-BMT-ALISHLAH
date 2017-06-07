@@ -210,7 +210,7 @@
           <input type="number" class="clean inputable" name="tab5_rekomen_pb" value="{{$app->rekomen_pb}}">
           &nbsp;&nbsp;
           <strong>JK.Waktu</strong>
-          <input type="number" class="clean inputable" name="tab5_waktu_pb" value="{{$app->waktu_pb}}">
+          <input type="number" class="clean inputable" name="tab5_waktu_pb" id="tab5_waktu_pb" value="{{$app->waktu_pb}}">
         </td>
       </tr>
       <tr>
@@ -243,7 +243,7 @@
         </thead>
         <tbody class="clone-area-pu">
           @php $t_pdptn = 0; @endphp
-          @foreach($pendapatan->where('tipe', 'pu')->get() as $pdptn)
+          @foreach($pendapatan->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu'])->get() as $pdptn)
           <!-- Total pendapatan -->
           @php $t_pdptn += $pdptn->isi; @endphp
           <tr>
@@ -281,7 +281,7 @@
         </thead>
         <tbody class="clone-area-pu_hhp">
           @php $t_pngl = 0; @endphp
-          @foreach($pengeluaran->where('tipe', 'pu_hhp')->get() as $pngl)
+          @foreach($pengeluaran->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu_hhp'])->get() as $pngl)
           <!-- Total pendapatan -->
           @php $t_pngl += $pngl->isi; @endphp
           <tr>
@@ -321,7 +321,7 @@
         </thead>
         <tbody class="clone-area-pl">
           @php $t_pdptn = 0; @endphp
-          @foreach($pendapatan->where('tipe', 'pl')->get() as $pdptn)
+          @foreach($pendapatan->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pl'])->get() as $pdptn)
           <!-- Total pendapatan -->
           @php $t_pdptn += $pdptn->isi; @endphp
           <tr>
@@ -359,7 +359,7 @@
         </thead>
         <tbody class="clone-area-pu_rt">
           @php $t_pngl = 0; @endphp
-          @foreach($pengeluaran->where('tipe', 'pu_rt')->get() as $pngl)
+          @foreach($pengeluaran->where(['no_aplikasi' => $app->no_aplikasi, 'tipe' => 'pu_rt'])->get() as $pngl)
           <!-- Total pendapatan -->
           @php $t_pngl += $pngl->isi; @endphp
           <tr>

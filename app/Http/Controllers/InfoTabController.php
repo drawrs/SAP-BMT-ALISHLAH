@@ -44,6 +44,8 @@ class InfoTabController extends Controller
        //return $result['tab2_alamat1'];
         // update tab 1
         $update = $app->update([
+            'produk_id' => $result['tab1_produk_id'],
+            'nominal_pb' => $result['tab1_nominal_pb'],
             'tanggal' =>     toDate($result['tab1_tanggal']),
             'cabang_id' =>     $result['tab1_cabang_id'],
             'kode_sro' =>     $result['tab1_kode_sro'],
@@ -83,6 +85,7 @@ class InfoTabController extends Controller
                             'nama_usaha' => $result['tab3_nama_usaha'],
                             'no_npwp' => $result['tab3_no_npwp'],
                             'telepon' => $result['tab3_telepon'],
+                            'kode_pos' => $result['tab3_kode_pos'],
                             'tipe_pendapatan' => $result['tab3_tipe_pendapatan'],
                             'tujuan_pb' => $result['tab3_tujuan_pb'],
                             'tujuan_pb_detail' => $result['tab3_tujuan_pb_detail']]);

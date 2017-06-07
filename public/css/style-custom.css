@@ -21,7 +21,8 @@ ul.top-menu > li > .logout, .btn-transparant {
   border: 1px #c9baba solid;
   border-radius: 3px;
   padding-top: 15px;
-  margin: 4px; }
+  margin: 4px;
+  height: 160px; }
 
 .tasks-widget .task-list > li {
   position: relative;

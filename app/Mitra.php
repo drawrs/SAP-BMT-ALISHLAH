@@ -18,6 +18,7 @@ class Mitra extends Model
                             'status_kawin',
                             'tgl_aktif_ktp',
                             'tgl_lahir',
+                            'jumlah_tanggungan',
                             'tgl_lahir_pasangan'];
     public function keuangan ()
     {

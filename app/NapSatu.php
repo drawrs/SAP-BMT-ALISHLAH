@@ -9,6 +9,7 @@ class NapSatu extends Model
     //
     protected $table = 'nap_satu';
     protected $fillable = ['adm_ush',
+                            'no_aplikasi',
                             'jns_prdk',
                             'ktg_thd_pl',
                             'ktg_thd_sp',

@@ -48,7 +48,7 @@ class Aplikasi extends Model
     }
     public function nap_satu ()
     {
-        return $this->hasOne('App\NapSatu', 'no_aplikasi', 'no_aplikasi');
+        return $this->belongsTo('App\NapSatu', 'no_aplikasi', 'no_aplikasi');
     }
     public function pendapatan ()
     {

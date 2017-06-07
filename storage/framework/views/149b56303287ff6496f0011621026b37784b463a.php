@@ -3,16 +3,33 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                  <h5 class="centered">Marcel Newman</h5>
+                  <p class="centered"></p>
+                  <h5 class="centered">Rizal Khilman <small>GM</small></h5>
                     
-                  <li class="mt">
-                      <a href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
+                  <li class="sub-menu">
+                      <a href="<?php echo e(url('dashboard')); ?>">
+                          <i class="fa fa-database" aria-hidden="true"></i>
+                          <span>Aplikasi</span>
                       </a>
                   </li>
-
+                  <li class="sub-menu">
+                      <a href="<?php echo e(url('mitra')); ?>">
+                          <i class="fa fa-users" aria-hidden="true"></i>
+                          <span>Mitra</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="<?php echo e(url('tambah-aplikasi')); ?>">
+                          <i class="fa fa-plus"></i>
+                          <span>Tambah Aplikasi</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="<?php echo e(url('tambah-aplikasi')); ?>">
+                          <i class="fa fa-plus"></i>
+                          <span>Tambah Mitra</span>
+                      </a>
+                  </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>

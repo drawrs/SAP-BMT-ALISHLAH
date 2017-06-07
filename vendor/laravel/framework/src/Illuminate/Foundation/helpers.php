@@ -1063,3 +1063,20 @@ if (! function_exists('makeAlamat')) {
         return $hasil;
     }
 }
+if (! function_exists('gelar')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function gelar($jk) // defaultnya sngaja dibikin false
+    {
+        if ($jk == 'L') {
+             $gelar = "Bapak. ";
+         } elseif ($jk == 'P') {
+            $gelar = "Ibu. ";
+         } else {
+            $gelar = "";
+         }
+        return $gelar;
+    }
+}

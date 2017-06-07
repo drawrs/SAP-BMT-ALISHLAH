@@ -1,21 +1,22 @@
 @extends('layouts.main-layout')
-@section('page', 'Beranda')
+@section('page', 'Ubah Aplikasi')
 @section('main-content')
 <!-- <h3><i class="fa fa-angle-right"></i> Blank Page</h3> -->
 <div class="row mt">
   <div class="col-md-12">
     <section class="task-panel tasks-widget">
       <div class="panel-heading panel-app">
-          <i class="fa fa-tasks"></i> PRODUK : <select name="" id="tipe_produk" class="clean">
+          <i class="fa fa-tasks"></i> PRODUK : <select name="tab1_produk_id" id="tipe_produk" class="clean inputable">
             @forelse($produks->all() as $prd)
-            <option value="{{$prd->id}}" {{ autoSelect($app->produk_id, $prd->id)}}>{{$prd->nama}}</option>
+              <option value="{{$prd->id}}" {{ autoSelect($app->produk_id, $prd->id)}}>{{$prd->nama}}</option>
             @empty
             @endforelse
           </select>
+          <button class="btn btn-success" id="" onclick="updateAplikasi()">Perbaharui</button>
           <div class="pull-right">
-            Nilai Pembiayaan Yang Diminta : Rp. <input type="text" value="{{$app->nominal_pb}}" id="nominal_pb" class="clean">
+            Nilai Pembiayaan Yang Diminta : Rp. <input type="text" name="tab1_nominal_pb" value="{{$app->nominal_pb}}" id="nominal_pb" class="clean inputable">
             <br>
-            Janga Waktu Pembayaran <input type="text" value="{{$app->waktu_pb}}" id="waktu_pb" size="2" class="clean"> bulan
+            Janga Waktu Pembayaran <input type="text" value="{{$app->waktu_pb}}" id="waktu_pb" size="2" class="clean inputable"> bulan
           </div>
       </div>
       <div class="panel-body">
@@ -87,7 +88,18 @@
   $(function() {
     //Datemask dd/mm/yyyy
     $("[data-mask]").inputmask();
-  
+    $('#waktu_pb').change(function(event) {
+      /* Act on the event */
+      $('#tab5_waktu_pb').val($(this).val());
+    });
+    $('.normal-tabs').click(function(event) {
+      /* Act on the event */
+      var tab = $(this).find('a').attr('href').substring(1, 100);
+      var tab_url = window.location.pathname + "?v=" + tab;
+      // change the url without reloading
+      window.history.pushState('page2', '', tab_url);
+      //console.log(tab_url);
+    });
     $('#submitLkmDua').click(function(event) {
       /* Act on the event */
       var lkm_pc_id = $('#tab4_lkm_pc_id').val();
@@ -96,7 +108,7 @@
 
       $.post('/update-aplikasi?lkm_pc=true', {_token: '{{csrf_token()}}', id: lkm_pc_id, tujuan_pb: tujuan_pb, penjelasan: penjelasan}, function(data, textStatus, xhr) {
        
-        console.log(data);
+        //console.log(data);
       });
       $.each($('.lkmDua'), function(index, val) {
          /* iterate through array or object */
@@ -109,9 +121,9 @@
          });
          $.post('/update-aplikasi?kon_kp=true', {_token: '{{csrf_token()}}', data: arr } , function(data, textStatus, xhr) {
            
-           console.log(data);
+           //console.log(data);
          });
-         console.log(arr);
+         //console.log(arr);
       });
       // notifikasi pemberitahuan
       toastr.success('Berhasil !', 'Data telah disimpan ke database', {timeOut: 5000})
@@ -141,10 +153,10 @@
           isi.push($(this).val()); 
       });
       
-      console.log('.judul-' + jenisRow + '-' + table);
+      /*console.log('.judul-' + jenisRow + '-' + table);
       console.log('.isi-' + jenisRow + '-' + table);      
       console.log(judul);
-      console.log(isi);
+      console.log(isi);*/
 
        if(table == 'pdp'){
         var url = '{{url('update-pendapatan')}}';
@@ -195,7 +207,7 @@
   }
 
   function updateAplikasi(){
-    console.log("submited");
+    //console.log("submited");
     var form = $("#tab1_form");
     var data = form.serialize();
     var url = '/update-aplikasi';
@@ -208,21 +220,21 @@
       }
       
     });
-    console.log(map);
+    //console.log(map);
     submitForm(map, function(){
       submitTab2(map, function(){
-        console.log("kelar lagi");
+        //console.log("kelar lagi");
       });
     });
   }
   function submitTab2(data, callback){
-    console.log("Udah dulu");
+    //console.log("Udah dulu");
     callback(data);
   }
   function submitForm(data, callback){
     var url = '/update-aplikasi';
     $.post(""+ url, {_token: '{{csrf_token()}}', isi: data }, function(data, textStatus, xhr) {
-        console.log(data);
+        //console.log(data);
        /* $.each(data, function(key, val){
           var status = val.status;
           callback(data);

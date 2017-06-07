@@ -8,6 +8,7 @@ class Keuangan extends Model
 {
     protected $table = "data_keuangan";
     protected $fillable = ['alamat',
+                            'mitra_id',
                             'bidang_usaha',
                             'kecamatan',
                             'nama_usaha',
@@ -15,6 +16,7 @@ class Keuangan extends Model
                             'telepon',
                             'tipe_pendapatan',
                             'tujuan_pb',
+                            'kode_pos',
                             'tujuan_pb_detail'];
     public function mitra ()
     {

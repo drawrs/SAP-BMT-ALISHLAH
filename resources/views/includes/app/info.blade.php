@@ -2,7 +2,7 @@
 <div class="col-md-8">
     <table width="600px">
     <form action="{{url('update-aplikasi')}}" method="POST" id="tabl_form">
-    <caption class="title">Diisi Oleh UJKS</caption>
+    <!-- <caption class="title">Diisi Oleh UJKS</caption> -->
     {!! csrf_field() !!}
     <tr>
         <td>
@@ -11,7 +11,7 @@
         <td>
         <div class="form-group">
             <input type="hidden" class="inputable" name="tab1_no_app" value="{{$app->no_aplikasi}}">
-            <font size="4.2em" style="font-weight: bolder;" name=""><span id="no_applikasi"></span></font>
+            <font size="4.2em" style="font-weight: bolder;" name=""><span id="no_applikasi">{{$app->no_aplikasi}}</span></font>
             </div>
         </td>
     </tr>
