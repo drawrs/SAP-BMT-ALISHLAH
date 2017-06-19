@@ -1,3 +1,4 @@
+
 <br>
 <table width="400px">
     <tr>
@@ -15,7 +16,7 @@
         <span style="font-size: 1.4em"><i class="fa fa-info"></i>info : Latar Belakang Pengajuan Fasilitas Pembiayaan</span><br>
           Penjelasan singkat mengenai tujuan pinjaman, latar belakang usaha dan perkembangan usaha mitra
     </div>
-  <ol class="task-list">
+  <ol class="task-list" style="list-style: none;">
       <li>
 
           <div class="task-title">
@@ -27,7 +28,7 @@
             <input type="hidden" name="id" value="{{$lbu->id}}">
             <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$lbu->pesan}}</textarea>
             <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
         </div>
     </li>
@@ -43,7 +44,7 @@
             <input type="hidden" name="id" value="{{$kusi->id}}">
         <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$kusi->pesan}}</textarea>
         <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
     </div>
 </li>
@@ -53,7 +54,7 @@
         <span style="font-size: 1.4em"><i class="fa fa-info"></i>info : Resiko Usaha dan Mitigasi</span><br>
          Penjelasan singkat mengenai pesaing, resiko usaha (suply, demand dan lainnya) dan upaya mengatasinya
     </div>
-<ol class="task-list">
+<ol class="task-list" style="list-style: none;">
 <li>
 
   <div class="task-title">
@@ -66,7 +67,7 @@
             <input type="hidden" name="id" value="{{$ps->id}}">
     <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$ps->pesan}}</textarea>
     <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
 </div>
 </li>
@@ -81,7 +82,7 @@
             <input type="hidden" name="id" value="{{$ru->id}}">
         <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$ru->pesan}}</textarea>
         <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
     </div>
 </div>
@@ -98,7 +99,7 @@
             <input type="hidden" name="id" value="{{$uumru->id}}">
     <textarea name="pesan" id="" cols="30" rows="5" class="form-control">{{$uumru->pesan}}</textarea>
     <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
 </div>
 </li>                                      

@@ -3,7 +3,7 @@
     <tr>
         <td><h4>Tanggal Penilaian</h4></td>
         <td>
-            <input type="text" size="30" value="" class="clean"  data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+            <input disabled='1' type="text" size="30" value="" class="clean"  data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
             <button class="btn btn-primary" title="Perbaharui tanggal Penilaian"><i class="fa fa-refresh"></i></button>
         </td>
     </tr>
@@ -13,20 +13,20 @@
   <div class="row">
   @foreach($konfirmasi_pk as $kpk)
     <form action="" id="kpk_{{$kpk->id}}" class="form lkmDua">
-    <input type="hidden" name="id" value="{{$kpk->id}}">
-    <input type="hidden" name="tab4_lkm_pc_id" id="tab4_lkm_pc_id" value="{{$kpk->lkm_pc_id}}">
+    <input disabled='1' type="hidden" name="id" value="{{$kpk->id}}">
+    <input disabled='1' type="hidden" name="tab4_lkm_pc_id" id="tab4_lkm_pc_id" value="{{$kpk->lkm_pc_id}}">
     <div class="col-md-6 bordered">
     <span>Konfirmasi Dengan Pihak Ketiga</span>
     <hr>
     <table class="table table-responsive table-borderless">
       <tr>
         <td width="150px">Nama Orang Yang Ditemui</td>
-        <td><input name="tab4_nama" type="text" class="form-control" value="{{$kpk->nama}}"></td>
+        <td><input disabled='1' name="tab4_nama" type="text" class="form-control" value="{{$kpk->nama}}"></td>
       </tr>
       <tr>
         <td>Hubungan</td>
         <td>
-          <select name="tab4_hbng" id="" class="form-control">
+          <select disabled='1' name="tab4_hbng" id="" class="form-control">
              @foreach(getEnum(new App\KonPK, 'hbng') as $m_key => $m_val)
                     <option value="{{$m_key}}" {{autoSelect($kpk->hbng, $m_val)}}>{{$m_val}}</option>
             @endforeach
@@ -36,7 +36,7 @@
       <tr>
         <td>Lama berhubungan</td>
         <td>
-          <select name="tab4_lm_hbng" id="" class="form-control">
+          <select disabled='1' name="tab4_lm_hbng" id="" class="form-control">
              @foreach(getEnum(new App\KonPK, 'lm_hbng') as $m_key => $m_val)
                     <option value="{{$m_val}}" {{autoSelect($kpk->lm_hbng, $m_val)}}>{{$m_val}}</option>
             @endforeach
@@ -46,7 +46,7 @@
       <tr>
         <td>Apakah Karakter Pemohon Baik?</td>
         <td>
-          <select name="tab4_krkt_baik" id="" class="form-control">
+          <select disabled='1' name="tab4_krkt_baik" id="" class="form-control">
              @foreach(getEnum(new App\KonPK, 'krkt_baik') as $m_key => $m_val)
                     <option value="{{$m_val}}" {{autoSelect($kpk->krkt_baik, $m_val)}}>{{$m_val}}</option>
             @endforeach
@@ -56,7 +56,7 @@
       <tr>
         <td>Apakah Usaha Dikelola Dengan Baik?</td>
         <td>
-          <select name="tab4_kl_baik" id="" class="form-control">
+          <select disabled='1' name="tab4_kl_baik" id="" class="form-control">
              @foreach(getEnum(new App\KonPK, 'kl_baik') as $m_key => $m_val)
                     <option value="{{$m_val}}" {{autoSelect($kpk->kl_baik, $m_val)}}>{{$m_val}}</option>
             @endforeach
@@ -65,7 +65,7 @@
       </tr>
       <tr>
         <td>Nomor telepon / handphone</td>
-        <td><input name="tab4_telp"  type="text" class="form-control" value="{{$kpk->telp}}"></td>
+        <td><input disabled='1' name="tab4_telp"  type="text" class="form-control" value="{{$kpk->telp}}"></td>
       </tr>
     </table>
   </div>
@@ -77,7 +77,7 @@
     <table class="table table-responsive table-borderless">
       <tr>
         <td width="150px">Tujuan Pengajuan Pembiayaan</td>
-        <td><select name="tab4_tujuan_pb" id="tab4_tujuan_pb" class="form-control">
+        <td><select disabled='1' name="tab4_tujuan_pb" id="tab4_tujuan_pb" class="form-control">
               @foreach(getEnum(new App\LkmPC, 'tujuan_pb') as $m_key => $m_val)
                     <option value="{{$m_key}}" {{autoSelect($lkm_pc->tujuan_pb, $m_val)}}>{{$m_val}}</option>
                @endforeach
@@ -96,4 +96,3 @@
     </div>
   </div>
 </div>
-<button class="btn btn-alert" id="submitLkmDua"><i class="fa fa-save"></i> Simpan</button>

@@ -19,8 +19,8 @@
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/style-responsive.css')}}" rel="stylesheet">
     <link href="{{url('css/style-custom.css')}}" rel="stylesheet">
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
     <link rel="stylesheet" href="{{url('assets/css/to-do.css')}}">
     <link href="{{ url('toastr/build/toastr.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ url('select2/css/select2.min.css')}}">
@@ -30,6 +30,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      .black-bg {
+        background: #5fd500;
+      }
+    </style>
 
   </head>
 

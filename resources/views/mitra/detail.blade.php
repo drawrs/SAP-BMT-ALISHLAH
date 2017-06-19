@@ -19,6 +19,9 @@
 <br>
 <div class="col-md-6">
     <table width="100%">
+    <form action="{{ url('ubah-mitra') }}" method="POST">
+    {!! csrf_field() !!}
+    <input type="hidden" name="mitra_id" value="{{$mitra->id}}">
     <caption class="title">DETAIL MITRA</caption>
     <tr>
         <td>
@@ -274,30 +277,23 @@
           </div>
 
           <div class=" add-task-row">
-              <a class="btn btn-success btn-sm pull-left" href="" onclick="window.history.back()">Kembali</a>
-              <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+              <a class="btn btn-default" href="" onclick="window.history.back()"><i class="fa fa-arrow-left"></i> Kembali</a>
+              <button type="submit" class="btn btn-success" ><i class="fa fa-save"></i> SIMPAN</button>
           </div>
-          
+          </form>
       </div>
   </section>
 </div>
 </div>
 @endsection
 @section('bottscript')
+<!-- InputMask -->
+<script src="{{ url('plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ url('plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script src="{{ url('plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
 <script>
-    const Foo = { template: '<div>Foo</div>'}
-    const Bar = { template: '<div>Bar</div>'}
-
-    const routes = [
-    { path: '/foo', component: Foo},
-    { path: '/bar', component: Bar},
-    ]
-
-    const router = new VueRouter({
-        routes //short for routes
-    })
-    const app = new Vue({
-        router
-    }).$mount('#app');
+    $(function() {
+        $("[data-mask]").inputmask();
+    });
 </script>
 @endsection

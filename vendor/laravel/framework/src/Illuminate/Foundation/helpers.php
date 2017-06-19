@@ -1033,6 +1033,9 @@ if (! function_exists('readDate')) {
      */
     function readDate($tgl = "0000-00-00") // defaultnya sngaja dibikin false
     {
+        if (strlen($tgl) < 10) {
+            return null;
+        }
         $x = explode("-", $tgl);
         $result = $x[2] . "/" . $x[1] . "/" . $x[0];
         return $result;
@@ -1045,6 +1048,9 @@ if (! function_exists('toDate')) {
      */
     function toDate($tgl = "00/00/0000") // defaultnya sngaja dibikin false
     {
+        if (strlen($tgl) < 10) {
+            return null;
+        }
         $x = explode("/", $tgl);
         $result = $x[2] . "-" . $x[1] . "-" . $x[0];
         return $result;
@@ -1078,5 +1084,91 @@ if (! function_exists('gelar')) {
             $gelar = "";
          }
         return $gelar;
+    }
+}
+
+if (! function_exists('dk_ada')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function dk_ada($st) // defaultnya sngaja dibikin false
+    {
+        if ($st == 'ya') {
+             return "V";
+         } 
+        return "";
+    }
+}
+
+if (! function_exists('dk_tidak')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function dk_tidak($st) // defaultnya sngaja dibikin false
+    {
+        if ($st == 'tidak') {
+             return "V";
+         } 
+        return "";
+    }
+}
+
+if (! function_exists('dpk_checked')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function dpk_checked($st) // defaultnya sngaja dibikin false
+    {
+        if ($st == 'ya') {
+             return " checked";
+         } 
+        return "";
+    }
+}
+if (! function_exists('pincab')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function pincab() // defaultnya sngaja dibikin false
+    {
+        (Auth::user()->detail->jabatan !== 'PINCAB') ? $result = "disabled": $result =  "";
+        return $result;
+    }
+}
+if (! function_exists('feo')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function feo() // defaultnya sngaja dibikin false
+    {
+        (Auth::user()->detail->jabatan !== 'FEO') ? $result = "disabled": $result =  "";
+        return $result;
+    }
+}
+if (! function_exists('mro')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function mro() // defaultnya sngaja dibikin false
+    {
+        (Auth::user()->detail->jabatan !== 'MRO') ? $result = "disabled": $result =  "";
+        return $result;
+    }
+}
+if (! function_exists('mro_legal')) {
+    /**
+     * Buat radio button
+     * jadi kalo nilainya sama bakal langsung checked
+     */
+    function mro_legal() // defaultnya sngaja dibikin false
+    {
+        (Auth::user()->detail->jabatan == 'MRO' || Auth::user()->detail->jabatan == 'LEGAL') ? $result = "": $result =  "disabled";
+        return $result;
     }
 }

@@ -8,8 +8,8 @@
         </td>
         <td>
         <div class="form-group">
-            <input type="hidden" class="inputable" name="no_aplikasi" value="{{$no_app}}" required>
-            <font size="4.2em" style="font-weight: bolder;" name="">{{$no_app}}<span id="no_applikasi"></span></font>
+            <input type="hidden" class="no_aplikasi inputable" name="no_aplikasi" value="{{$no_app}}" required>
+            <font size="4.2em" style="font-weight: bolder;" name="" class="no_aplikasi"><span id="no_aplikasi">{{$no_app}}</span></font>
             </div>
         </td>
     </tr>
@@ -42,7 +42,7 @@
         </td>
         <td>
         <div class="form-group">
-            <select name="cabang_id" id="" class="form-control inputable select2" required>
+            <select name="cabang_id" id="pilih_cabang" class="form-control inputable select2" required>
                 @forelse($cabangs->all() as $cabang)
                     <option value="{{$cabang->id}}">{{$cabang->nama}}</option>
                 @empty
@@ -69,7 +69,7 @@
          <div class="form-group">
            <select name="perkenalan" id="" class="form-control inputable" required>
                @foreach(getEnum(new App\Aplikasi, 'perkenalan') as $m_key => $m_val)
-                    <option value="{{$m_key}}">{{$m_val}}</option>
+                    <option value="{{$m_val}}">{{$m_val}}</option>
                @endforeach
             </select>
             </div>
@@ -90,7 +90,7 @@
             Saya merekomendasikan agar aplikasi ini &nbsp;&nbsp;
             <select name="saran" id="" class="clean inputable" required>
                @foreach(getEnum(new App\Aplikasi, 'saran') as $m_key => $m_val)
-                    <option value="{{$m_key}}">{{$m_val}}</option>
+                    <option value="{{$m_val}}">{{$m_val}}</option>
                @endforeach
             </select>
         </td>

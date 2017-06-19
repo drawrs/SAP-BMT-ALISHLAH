@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('page', 'Beranda')
+@section('page', 'Daftar Mitra')
 @section('main-content')
 <!-- <h3><i class="fa fa-angle-right"></i> Blank Page</h3> -->
 <div class="row mt">
@@ -7,7 +7,7 @@
       <section class="task-panel tasks-widget">
         <div class="panel-heading">
                 <div class="pull-left">
-                <h5><i class="fa fa-tasks"></i> DAFTAR APLIKASI</h5>
+                <h5><i class="fa fa-tasks"></i> DAFTAR MITRA</h5>
             </div>
                 
             <br>
@@ -44,20 +44,20 @@
                     <u><a href="{{ url('dashboard?no_ktp='. $mitra->no_ktp) }}">Lihat aplikasi</a></u>
                   </td>
                   <td>
-                    <a href="{{ url('detail-mitra?id='.$mitra->id) }}" class="btn btn-success btn-xs">Detail</a>
-                    <a href="" class="btn btn-warning btn-xs">Ubah</a>
-                    <a href="" class="btn btn-danger btn-xs">Hapus</a>
+                    <a href="{{ url('detail-mitra?id='.$mitra->id) }}" class="btn btn-success btn-xs"><i class="fa fa-list"></i> Detail</a>
+                    <a href="{{ url('hapus-mitra/' . $mitra->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Anda yakin akan menghapus mitra ini? Semua data yang berkaitan dengan mitra ini juga akan dihapus!')"><i class="fa fa-trash"></i> Hapus</a>
                   </td>
                 </tr>
               @empty
               @endforelse
             </tbody>
           </table>
+          {!! $mitras->links() !!}
           </div>
 
           <div class=" add-task-row">
-              <a class="btn btn-success btn-sm pull-left" href="{{url('tambah-aplikasi')}}">Tambah Aplikasi</a>
-              <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+              <a class="btn btn-success btn-sm pull-left" href="{{url('tambah-mitra')}}"><i class="fa fa-plus"></i> Tambah Mitra</a>
+              <!-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a> -->
           </div>
           
       </div>

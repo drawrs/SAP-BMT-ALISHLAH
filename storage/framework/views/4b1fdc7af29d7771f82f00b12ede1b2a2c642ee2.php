@@ -1,3 +1,4 @@
+
 <br>
 <table width="400px">
     <tr>
@@ -15,7 +16,7 @@
         <span style="font-size: 1.4em"><i class="fa fa-info"></i>info : Latar Belakang Pengajuan Fasilitas Pembiayaan</span><br>
           Penjelasan singkat mengenai tujuan pinjaman, latar belakang usaha dan perkembangan usaha mitra
     </div>
-  <ol class="task-list">
+  <ol class="task-list" style="list-style: none;">
       <li>
 
           <div class="task-title">
@@ -28,7 +29,7 @@
             <input type="hidden" name="id" value="<?php echo e($lbu->id); ?>">
             <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($lbu->pesan); ?></textarea>
             <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
         </div>
     </li>
@@ -45,7 +46,7 @@
             <input type="hidden" name="id" value="<?php echo e($kusi->id); ?>">
         <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($kusi->pesan); ?></textarea>
         <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
     </div>
 </li>
@@ -55,7 +56,7 @@
         <span style="font-size: 1.4em"><i class="fa fa-info"></i>info : Resiko Usaha dan Mitigasi</span><br>
          Penjelasan singkat mengenai pesaing, resiko usaha (suply, demand dan lainnya) dan upaya mengatasinya
     </div>
-<ol class="task-list">
+<ol class="task-list" style="list-style: none;">
 <li>
 
   <div class="task-title">
@@ -69,7 +70,7 @@
             <input type="hidden" name="id" value="<?php echo e($ps->id); ?>">
     <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($ps->pesan); ?></textarea>
     <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
 </div>
 </li>
@@ -85,7 +86,7 @@
             <input type="hidden" name="id" value="<?php echo e($ru->id); ?>">
         <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($ru->pesan); ?></textarea>
         <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
     </div>
 </div>
@@ -103,7 +104,7 @@
             <input type="hidden" name="id" value="<?php echo e($uumru->id); ?>">
     <textarea name="pesan" id="" cols="30" rows="5" class="form-control"><?php echo e($uumru->pesan); ?></textarea>
     <br>
-            <button class="btn btn-success">Terbitkan</button>
+           
             </form>
 </div>
 </li>                                      

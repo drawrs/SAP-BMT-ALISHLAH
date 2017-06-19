@@ -7,7 +7,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>@lang('site.name')</b></a>
+            <a href="{{ url('') }}" class="logo"><b>@lang('site.name')</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -102,9 +102,18 @@
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                     <li>
-                        <a href="" class="btn btn-transparant"><i class="fa fa-plus"></i> Tambah Aplikasi</a>
+                        <a href="{{ url('tambah-aplikasi') }}" class="btn btn-transparant"><i class="fa fa-plus"></i> Tambah Aplikasi</a>
                     </li>
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li>
+                    <a class="logout" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    </li>
                 </ul>
             </div>
         </header>

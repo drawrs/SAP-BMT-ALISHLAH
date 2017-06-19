@@ -24,13 +24,20 @@
                           <span>Tambah Aplikasi</span>
                       </a>
                   </li>
+
                   <li class="sub-menu">
-                      <a href="{{ url('tambah-aplikasi') }}">
+                      <a href="{{ url('tambah-mitra') }}">
                           <i class="fa fa-plus"></i>
                           <span>Tambah Mitra</span>
                       </a>
                   </li>
                   <li class="sub-menu">
+                      <a href="{{ url('akun') }}">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                          <span>Kelola Akun</span>
+                      </a>
+                  </li>
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>UI Elements</span>
@@ -41,7 +48,7 @@
                           <li><a  href="panels.html">Panels</a></li>
                       </ul>
                   </li>
-
+                   -->
               </ul>
               <!-- sidebar menu end-->
           </div>

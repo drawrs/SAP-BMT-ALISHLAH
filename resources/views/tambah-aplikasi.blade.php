@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('page', 'Tambah Aplikasi')
+@section('page', 'Tambah Aplikasi Baru')
 @section('main-content')
 <!-- <h3><i class="fa fa-angle-right"></i> Blank Page</h3> -->
 <div class="row mt">
@@ -120,152 +120,22 @@
       window.history.pushState('page2', '', tab_url);
       //console.log(tab_url);
     });
-    $('#submitLkmDua').click(function(event) {
+    $('#pilih_cabang').change(function(event) {
       /* Act on the event */
-      var lkm_pc_id = $('#tab4_lkm_pc_id').val();
-      var tujuan_pb = $('#tab4_tujuan_pb').val();
-      var penjelasan = $('#tab4_penjelasan').val(); 
-
-      $.post('/update-aplikasi?lkm_pc=true', {_token: '{{csrf_token()}}', id: lkm_pc_id, tujuan_pb: tujuan_pb, penjelasan: penjelasan}, function(data, textStatus, xhr) {
-       
-        //console.log(data);
+      var kode_kantor = $(this).val();
+      $.post('/get-no-aplikasi/' + kode_kantor, {_token: '{{csrf_token()}}' }, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        var result = JSON.parse(data);
+        $('#no_aplikasi').text(result.result);
+        $('.no_aplikasi').val(result.result);
+        //console.log(result.result);
       });
-      $.each($('.lkmDua'), function(index, val) {
-         /* iterate through array or object */
-         var form = $(this).serializeArray();
-         var arr = {};
-         $.each(form, function(index, val) {
-            /* iterate through array or object */
-            //console.log(form[index].name + " " + val.value);
-           arr[form[index].name] = val.value;
-         });
-         $.post('/update-aplikasi?kon_kp=true', {_token: '{{csrf_token()}}', data: arr } , function(data, textStatus, xhr) {
-           
-           //console.log(data);
-         });
-         //console.log(arr);
-      });
-      // notifikasi pemberitahuan
-      toastr.success('Berhasil !', 'Data telah disimpan ke database', {timeOut: 5000})
     });
   });
 </script>
 
 <script>
-  function addPdpRow(jenisRow, table){
-    var dom = '<tr>';
-    dom += '<td><input type="text" class="form-control judul-'+ jenisRow +'-' + table + '" placeholder="nama pendapatan"/></td>';
-    dom += '<td><input type="number" class="form-control isi-'+ jenisRow +'-' + table + '" placeholder="nilai pendapatan"/></td>';
-    dom += '</tr>';
-    //console.log(dom);
-    $(dom).appendTo('.clone-area-' + jenisRow);
-    //$('#pu_form').preventDefault
-  }
-  function submitPdp(jenisRow, table){
-      var no_app = $('#no_applikasi').text();
-      var judul = [];
-      var isi = [];
-      var tipe = jenisRow;
-      $.each($('.judul-' + jenisRow + '-' + table), function() {
-          judul.push($(this).val()); 
-      });
-      $.each($('.isi-' + jenisRow + '-' + table), function() {
-          isi.push($(this).val()); 
-      });
-      
-      /*console.log('.judul-' + jenisRow + '-' + table);
-      console.log('.isi-' + jenisRow + '-' + table);      
-      console.log(judul);
-      console.log(isi);*/
-
-       if(table == 'pdp'){
-        var url = '{{url('update-pendapatan')}}';
-      } else if(table == 'pngl') {
-        var url = '{{url('update-pengeluaran')}}';
-      } else if(table == 'neraca'){
-        var url = '{{url('update-neraca')}}';
-      } else {
-        alert("Url tujuan tidak valid!");
-        return;
-      }
-      $.post(""+ url, {
-          _token: '{{csrf_token()}}',
-          judul : judul,
-          isi : isi,
-          no_app: no_app,
-          tipe : tipe
-        }, function(data, textStatus, xhr) {
-          /*optional stuff to do after success */
-         //console.log(data);
-        //return;
-          alert(data);
-          location.reload();
-      });
-      
-  }
-  function hapusPdp(id, table){
-    var confirm = window.confirm("Anda yakin ?");
-    if(confirm == false){
-      return;
-    }
-     if(table == 'pdp'){
-        var url = '{{url('hapus-pendapatan')}}';
-      } else if(table == 'pngl') {
-        var url = '{{url('hapus-pengeluaran')}}';
-      } else if(table == 'neraca') {
-        var url = '{{url('hapus-neraca')}}';
-      } else {
-        alert("Url tujuan tidak valid!");
-        return;
-      }
-    $.post(""+ url, {_token: '{{csrf_token()}}', id : id}, function(data, textStatus, xhr) {
-        /*optional stuff to do after success */
-        //console.log(data);
-        alert(data);
-          location.reload();
-    });
-  }
-
-  function updateAplikasi(){
-    //console.log("submited");
-    var form = $("#form");
-    var data = form.serialize();
-    var url = '/update-aplikasi';
-    var map = {};
-    $('.inputable').each(function(index, el) {
-      if($(this).attr('name') == 'tab2_jk'){
-        map[$(this).attr('name')] = $('input[type=radio]:checked').val();
-      } else {
-        map[$(this).attr('name')] = $(this).val();
-      }
-      
-    });
-    //console.log(map);
-    submitForm(map, function(){
-      submitTab2(map, function(){
-        //console.log("kelar lagi");
-      });
-    });
-  }
-  function submitTab2(data, callback){
-    //console.log("Udah dulu");
-    callback(data);
-  }
-  function submitForm(data, callback){
-    var url = '/update-aplikasi';
-    $.post(""+ url, {_token: '{{csrf_token()}}', isi: data }, function(data, textStatus, xhr) {
-        //console.log(data);
-       /* $.each(data, function(key, val){
-          var status = val.status;
-          callback(data);
-        });*/
-        alert(data);
-        // notifikasi pemberitahuan
-        /*toastr.success('Berhasil !', "Data telah di perbaharui", {
-          timeOut: 5000});*/
-        location.reload();
-      });
-  }
+ 
   
 </script>
 @endsection
